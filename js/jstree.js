@@ -1,0 +1,56 @@
+$('#jstree').jstree({
+  'plugins': ['search', 'checkbox', 'wholerow'],
+  'core': {
+    'data': [
+      {'id': '1', 'parent': '#', 'text': 'Greater London'},
+      {'id': '11', 'parent': '1', 'text': 'Goldsmiths College'},
+      {'id': '12', 'parent': '1', 'text': 'King\'s College London'},
+      {'id': '13', 'parent': '1', 'text': 'University College London'},
+      {'id': '14', 'parent': '1', 'text': 'University of Westminster'},
+      {'id': '2', 'parent': '#', 'text': 'North East'},
+      {'id': '21', 'parent': '2', 'text': 'University of Durham'},
+      {'id': '22', 'parent': '2', 'text': 'University of Teeside'},
+      {'id': '3', 'parent': '#', 'text': 'North West'},
+      {'id': '31', 'parent': '3', 'text': 'Lancaster University'},
+      {'id': '32', 'parent': '3', 'text': 'University of Liverpool'},
+      {'id': '33', 'parent': '3', 'text': 'University of Manchester'},
+      {'id': '34', 'parent': '3', 'text': 'Manchester Metropolitan University'},
+      {'id': '4', 'parent': '#', 'text': 'South West'},
+      {'id': '41', 'parent': '4', 'text': 'University of Bath'},
+      {'id': '42', 'parent': '4', 'text': 'University of Bristol'},
+      {'id': '43', 'parent': '4', 'text': 'University of Exeter'},
+      {'id': '44', 'parent': '4', 'text': 'University of Plymouth'},
+      {'id': '5', 'parent': '#', 'text': 'Yorkshire and Humberside'},
+      {'id': '51', 'parent': '5', 'text': 'University of Hull'},
+      {'id': '52', 'parent': '5', 'text': 'University of Leeds'},
+      {'id': '53', 'parent': '5', 'text': 'University of York'},
+    ],
+    'animation': false,
+    //'expand_selected_onload': true,
+    'themes': {
+      'icons': false,
+    }
+  },
+  'search': {
+    'show_only_matches': true,
+    'show_only_matches_children': true
+  }
+});
+
+$('#search').on("keyup change", function () {
+  $('#jstree').jstree(true).search($(this).val())
+});
+
+$('#clear').click(function (e) {
+  $('#search').val('').change().focus()
+});
+
+$('#jstree').on('changed.jstree', function (e, data) {
+  var objects = data.instance.get_selected(true)
+  var leaves = $.grep(objects, function (o) { return data.instance.is_leaf(o) })
+  var list = $('#output')
+  list.empty()
+  $.each(leaves, function (i, o) {
+    $('<li/>').text(o.text).appendTo(list)
+  });
+});
