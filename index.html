@@ -19,12 +19,14 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <select class="selectpicker" multiple data-actions-box="true" style="display: inline;">
-                    <option value="value1">Mustard</option>
-                    <option value="value4">Ketchup</option>
-                    <option value="value7">Relish</option>
-                </select>
-                <div style="display: inline;" class="dropdown dropdown-tree" id="firstDropDownTree"></div>
+                <div class="treeview-selectpicker">
+                    <select name="partTwo[]" class="selectpicker" multiple data-live-search="true" data-actions-box="true" style="display: inline;">
+                        <option value="value1">Mustard</option>
+                        <option value="value4">Ketchup</option>
+                        <option value="value7">Relish</option>
+                    </select>
+                    <div style="display: inline;" class="dropdown dropdown-tree" id="firstDropDownTree"></div>
+                </div>
             </div>
             <div class="col-sm-4">
                 <!--<div class="dropdown dropdown-tree" id="firstDropDownTree"></div>-->
@@ -65,7 +67,7 @@
         ];
 
         var options = {
-            title : "...",
+            title : '<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>',
             data: arr,
             maxHeight: 300,
             clickHandler: function(element){
