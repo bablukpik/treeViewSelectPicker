@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select Tree View</title>
+</head>
+<body>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Ship/Est.</label>
+        <div class="col-sm-3" >
+            <select class="selectpicker show-tick form-control" name="partInNotIn" id="partInNotIn" data-placeholder="Select Option" aria-hidden="true" >
+                <option value="1" selected>In</option>
+                <option value="2">Not In</option>
+            </select>
+            <span class="partTwo"></span>
+        </div>
+        <div class="col-sm-6">
+            <div class="treeview-selectpicker">
+                <select name="partTwo[]" class="selectpicker" multiple data-live-search="true" data-actions-box="true" style="display: inline;">
+                    <option value="value1">Mustard</option>
+                    <option value="value4">Ketchup</option>
+                    <option value="value7">Relish</option>
+                </select>
+                <div style="display: inline;" class="dropdown dropdown-tree" id="firstDropDownTree"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
